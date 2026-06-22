@@ -1,0 +1,36 @@
+# Site settings
+title: Chris's Blog
+email: ichris@gmail.com
+description: >-
+  Personal blog — notes on software, engineering, and whatever else.
+baseurl: ""
+url: "https://chrisadas.github.io"
+
+# Theme (GitHub Pages supported)
+theme: minima
+
+# Author shown in footer / SEO
+author:
+  name: Chrisada Sookdhis
+
+# Plugins (all on the GitHub Pages whitelist)
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Minima settings
+minima:
+  skin: auto          # auto/light/dark — follows reader's OS setting
+  date_format: "%b %-d, %Y"
+
+# Build settings
+markdown: kramdown
+
+# Files Jekyll should ignore
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
+  - README.md
