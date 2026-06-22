@@ -26,6 +26,7 @@ minima:
 
 # Build settings
 markdown: kramdown
+future: true          # publish posts even if their date is ahead of the build clock
 
 # Files Jekyll should ignore
 exclude:
