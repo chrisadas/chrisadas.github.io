@@ -1,6 +1,5 @@
 # Site settings
-title: Chris's Blog
-email: ichris@gmail.com
+title: chrisadas
 description: >-
   Personal blog — notes on software, engineering, and whatever else.
 baseurl: ""
@@ -11,7 +10,7 @@ theme: minima
 
 # Author shown in footer / SEO
 author:
-  name: Chrisada Sookdhis
+  name: chrisadas
 
 # Plugins (all on the GitHub Pages whitelist)
 plugins:
