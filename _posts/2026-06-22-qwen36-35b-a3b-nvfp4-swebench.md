@@ -9,6 +9,8 @@ categories: general
 
 I have two RTX PRO 2000 Blackwell cards at home, 16GB of GDDR7 each, 32GB in total. These are not H100s, or anything close to one. They're the kind of hardware you buy when you want to run serious local inference and you're paying for it yourself.
 
+![2X RTX Pro 2000 Blackwell in a 2U server](/assets/images/proxmox-rack-2000blackwell.png)
+
 The question I wanted answered was practical. Can a model running entirely on my own hardware do real coding work, fixing actual bugs in real codebases, or is local inference still a notch below the point where it becomes useful? I'd seen the leaderboard numbers for the open models, but I had no idea what they would translate to once a model was quantized down to fit my cards and pointed at problems I hadn't hand-picked. The only honest way to find out was to measure it.
 
 So I ran the whole thing. All 500 problems of SWE-bench Verified, against Qwen3.6-35B-A3B in NVIDIA's NVFP4 4-bit build, served on vLLM with a 128K-token context window and an agent harness pointed at the local endpoint through LiteLLM. No cloud, no API key, just my own machine working through real GitHub issues from Django, sympy, scikit-learn, matplotlib and the rest.
