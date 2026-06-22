@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 262" width="720" height="262" role="img" aria-labelledby="ttl">
+<title id="ttl">Why 86 runs produced no patch: 59 context-window, 24 turn budget, 3 format</title>
+<style>
+text{font-family:system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif}
+.t{fill:#2c2c2a}.m{fill:#6b6a64}.big{fill:#2c2c2a;font-weight:600}.h{fill:#2c2c2a;font-weight:600}
+.axis{stroke:#d3d1c7}.track{fill:#eceae2}
+@media (prefers-color-scheme:dark){
+.t{fill:#e8e6dd}.m{fill:#a8a69c}.big{fill:#e8e6dd}.h{fill:#e8e6dd}
+.axis{stroke:#45453f}.track{fill:#2e2e2b}
+}
+</style>
+<text class="h" x="20" y="26" font-size="15">Why 86 runs produced no patch</text>
+<text class="big" x="20" y="66" font-size="28">83 / 86</text>
+<text class="m" x="158" y="66" font-size="13">context or turn budget exhausted, not reasoning</text>
+<text class="t" x="20" y="121" font-size="13">Context window hit</text>
+<rect x="210" y="104" width="410" height="26" rx="4" class="track"/>
+<rect x="210" y="104" width="281.3" height="26" rx="4" fill="#185FA5"/>
+<text class="m" x="640" y="121" font-size="13">59 · 69%</text>
+<text class="t" x="20" y="163" font-size="13">Turn budget exhausted</text>
+<rect x="210" y="146" width="410" height="26" rx="4" class="track"/>
+<rect x="210" y="146" width="114.4" height="26" rx="4" fill="#888780"/>
+<text class="m" x="640" y="163" font-size="13">24 · 28%</text>
+<text class="t" x="20" y="205" font-size="13">Format error</text>
+<rect x="210" y="188" width="410" height="26" rx="4" class="track"/>
+<rect x="210" y="188" width="14.3" height="26" rx="4" fill="#B4B2A9"/>
+<text class="m" x="640" y="205" font-size="13">3 · 3%</text>
+<text class="m" x="20" y="244" font-size="12">The 128K ceiling is the most these 32 GB will hold, half the model’s native 256K.</text>
+</svg>

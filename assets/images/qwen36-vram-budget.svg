@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 272" width="720" height="272" role="img" aria-labelledby="ttl">
+<title id="ttl">VRAM budget: weights 17.5 GB, KV cache 1.3 GB, in 32 GB</title>
+<style>
+text{font-family:system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif}
+.t{fill:#2c2c2a}.m{fill:#6b6a64}.big{fill:#2c2c2a;font-weight:600}.h{fill:#2c2c2a;font-weight:600}
+.axis{stroke:#d3d1c7}.track{fill:#eceae2}
+@media (prefers-color-scheme:dark){
+.t{fill:#e8e6dd}.m{fill:#a8a69c}.big{fill:#e8e6dd}.h{fill:#e8e6dd}
+.axis{stroke:#45453f}.track{fill:#2e2e2b}
+}
+</style>
+<text class="h" x="20" y="26" font-size="15">Fitting a 35B model and 128K context into 32 GB</text>
+<rect x="20.0" y="46" width="371.9" height="40" rx="4" fill="#378ADD"/>
+<rect x="391.9" y="46" width="27.6" height="40" fill="#EF9F27"/>
+<rect x="419.5" y="46" width="280.5" height="40" rx="4" fill="#C7C5BC"/>
+<rect x="20" y="107" width="11" height="11" rx="2" fill="#378ADD"/><text class="t" x="37" y="116" font-size="13">Weights (4-bit) · 17.5 GB</text>
+<rect x="240" y="107" width="11" height="11" rx="2" fill="#EF9F27"/><text class="t" x="257" y="116" font-size="13">KV cache @ 128K · ~1.3 GB</text>
+<rect x="470" y="107" width="11" height="11" rx="2" fill="#C7C5BC"/><text class="t" x="487" y="116" font-size="13">Overhead · ~13 GB</text>
+<text class="m" x="20" y="158" font-size="12">Why the KV cache stays cheap, only every 4th layer keeps one</text>
+<rect x="20" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="37" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="54" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="71" y="170" width="15" height="20" rx="2" fill="#EF9F27"/><rect x="88" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="105" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="122" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="139" y="170" width="15" height="20" rx="2" fill="#EF9F27"/><rect x="156" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="173" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="190" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="207" y="170" width="15" height="20" rx="2" fill="#EF9F27"/><rect x="224" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="241" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="258" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="275" y="170" width="15" height="20" rx="2" fill="#EF9F27"/><rect x="292" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="309" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="326" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="343" y="170" width="15" height="20" rx="2" fill="#EF9F27"/><rect x="360" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="377" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="394" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="411" y="170" width="15" height="20" rx="2" fill="#EF9F27"/><rect x="428" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="445" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="462" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="479" y="170" width="15" height="20" rx="2" fill="#EF9F27"/><rect x="496" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="513" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="530" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="547" y="170" width="15" height="20" rx="2" fill="#EF9F27"/><rect x="564" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="581" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="598" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="615" y="170" width="15" height="20" rx="2" fill="#EF9F27"/><rect x="632" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="649" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="666" y="170" width="15" height="20" rx="2" fill="#C7C5BC"/><rect x="683" y="170" width="15" height="20" rx="2" fill="#EF9F27"/>
+<rect x="20" y="205" width="11" height="11" rx="2" fill="#EF9F27"/><text class="t" x="37" y="214" font-size="13">Full attention · 10 layers</text>
+<rect x="230" y="205" width="11" height="11" rx="2" fill="#C7C5BC"/><text class="t" x="247" y="214" font-size="13">Linear attention · 30 layers</text>
+<text class="m" x="20" y="250" font-size="12">A naive all-40-layer estimate predicts ~5 GB. The hybrid design makes it ~1.3 GB.</text>
+</svg>

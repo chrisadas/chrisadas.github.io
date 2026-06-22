@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 224" width="720" height="224" role="img" aria-labelledby="ttl">
+<title id="ttl">Outcomes of 500 problems: 299 resolved, and 75 percent of produced patches passed</title>
+<style>
+text{font-family:system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif}
+.t{fill:#2c2c2a}.m{fill:#6b6a64}.big{fill:#2c2c2a;font-weight:600}.h{fill:#2c2c2a;font-weight:600}
+.axis{stroke:#d3d1c7}.track{fill:#eceae2}
+@media (prefers-color-scheme:dark){
+.t{fill:#e8e6dd}.m{fill:#a8a69c}.big{fill:#e8e6dd}.h{fill:#e8e6dd}
+.axis{stroke:#45453f}.track{fill:#2e2e2b}
+}
+</style>
+<text class="h" x="20" y="26" font-size="15">What happened to all 500 problems</text>
+<text class="big" x="20" y="64" font-size="28">60%</text>
+<text class="m" x="20" y="82" font-size="12">resolved overall · 299 / 500</text>
+<text class="big" x="250" y="64" font-size="28">75%</text>
+<text class="m" x="250" y="82" font-size="12">when it produced a patch · 299 / 396</text>
+<rect x="20.0" y="104" width="406.6" height="36" fill="#1D9E75"/>
+<rect x="426.6" y="104" width="131.9" height="36" fill="#D85A30"/>
+<rect x="558.6" y="104" width="117.0" height="36" fill="#888780"/>
+<rect x="675.5" y="104" width="24.5" height="36" fill="#B4B2A9"/>
+<line x1="20" y1="148" x2="558.6" y2="148" class="axis" stroke-width="1"/>
+<line x1="558.6" y1="148" x2="700" y2="148" class="axis" stroke-width="1"/>
+<text class="m" x="20" y="164" font-size="12">produced a patch · 396</text>
+<text class="m" x="700" y="164" font-size="12" text-anchor="end">no patch · 104</text>
+<rect x="20" y="187" width="11" height="11" rx="2" fill="#1D9E75"/><text class="t" x="37" y="196" font-size="13">Resolved · 299</text>
+<rect x="165" y="187" width="11" height="11" rx="2" fill="#D85A30"/><text class="t" x="182" y="196" font-size="13">Unresolved · 97</text>
+<rect x="320" y="187" width="11" height="11" rx="2" fill="#888780"/><text class="t" x="337" y="196" font-size="13">Empty · 86</text>
+<rect x="445" y="187" width="11" height="11" rx="2" fill="#B4B2A9"/><text class="t" x="462" y="196" font-size="13">Error · 18</text>
+</svg>
