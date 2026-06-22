@@ -63,7 +63,12 @@ The easy assumption is that quantization made the model dumber. That's mostly wr
 
 Here is what happened to the 500, broken down:
 
-![Chart showing causes of no patch](/assets/images/qwen36-empty-patches.svg)
+| Outcome | Count | % of 500 |
+|---|---:|---:|
+| **Resolved** (patch passed tests) | 299 | 59.8% |
+| Unresolved (patch ran, failed tests) | 97 | 19.4% |
+| **Empty patch** (no diff produced) | 86 | 17.2% |
+| Harness error | 18 | 3.6% |
 
 The number that changed how I read all of this is the next one. Of the 396 instances where the model actually committed to a patch that applied and ran, 299 passed. That is 75.5%.
 
@@ -75,11 +80,7 @@ That is 17% of the benchmark producing nothing, and almost all of it comes from 
 
 None of these empty patches is the model giving up. Each one carries an exit status, and they break down like this:
 
-| Why the patch came back empty | Count | Share of empties |
-|---|---:|---:|
-| **Context window exceeded** | 59 | 69% |
-| Turn budget exhausted | 24 | 28% |
-| Repeated format errors | 3 | 3% |
+![Chart showing causes of no patch](/assets/images/qwen36-empty-patches.svg)
 
 Sixty-nine percent of my empty patches come from the agent running out of context window before it ever writes a diff. It reads a file, searches, reads another, reasons, reads another, and once there is enough material to read, it runs past 128K tokens and dies with nothing to submit. And this is where it all connects. The 128K ceiling is the one my 32GB of VRAM forced. The model ships with 256K of native context, and 128K is the most these 32GB will hold. It isn't a cautious setting I could have relaxed, it is the hardware's own limit. So the largest single chunk of my lost points traces straight back to the constraint that made the model barely fit in the first place. The memory budget and the empty patches turn out to be the same problem.
 
