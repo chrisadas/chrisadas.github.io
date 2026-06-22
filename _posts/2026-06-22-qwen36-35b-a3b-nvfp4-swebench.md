@@ -47,6 +47,8 @@ There were other snags, like a two-GPU deadlock I cleared by switching off an ov
 
 ## The number
 
+![The outcome, 59.8% on swe-bench-verified](/assets/images/qwen36-outcomes.svg)
+
 The model resolved 299 of the 500 problems, or 59.8%. For a sparse MoE that activates only 3 billion parameters per token, quantized to 4 bits to fit in 32GB and run through a generic open-source scaffold on my own machine, I'm happy with that. For context, on the public SWE-bench Verified leaderboard, 60% sits above GPT-4.1 (54.6%) and just under Gemini 2.5 Pro (63.8%). That is roughly last-generation frontier territory, at zero marginal cost per token, fully private, on hardware that fits on a shelf.
 
 The comparison that stings is with the model's own headline. Qwen's model card reports 73.4% for this exact model, which puts it level with Claude Haiku 4.5 and Sonnet 4. I left 13.6 points on the table against that number. Working out where those points went is most of what this exercise was about.
