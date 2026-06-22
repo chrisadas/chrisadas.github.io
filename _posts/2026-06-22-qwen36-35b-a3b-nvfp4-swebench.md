@@ -39,6 +39,8 @@ The weights are the easy half. Thirty-five billion parameters at four bits is ab
 
 The KV cache is the half that decides things. That is the running memory of attention, and it grows with every token of context, so at 128K tokens, left unchecked, it's what runs you out of memory. Two things keep it affordable. The first is storing it at eight bits instead of sixteen, which halves the cost outright. The second is the model itself. Qwen3.6 is a hybrid, where only every fourth layer (10 of its 40) runs full attention with a growing cache, while the other 30 use linear attention, whose state stays a small fixed size no matter how long the context gets. So the cache that actually scales with context comes from ten layers, not forty.
 
+![How VRAM is used](/assets/images/qwen36-vram-budget.svg)
+
 The arithmetic that falls out is friendly. Each full-attention layer holds a key and a value for two KV-heads of 256 dimensions, which at eight bits works out to roughly 2 × 10 × 2 × 256, or about 10 KB per token. Across 131,072 tokens the KV cache itself tops out near 1.3 GB. Stacked on the 17.5 GB of weights, the part of the budget I can size on the back of an envelope sits under 19 GB. (A naive estimate that treated all 40 layers as full attention would have predicted around 5 GB of cache and still fit comfortably. The hybrid design just makes it roomier.) But the cache was never the thing that bound me. The rest of the budget goes to unglamorous overhead, the CUDA graphs and activation buffers and the server's own workspace, and that overhead is what set the real ceiling. The envelope said a long context was safe. The allocator then settled the exact number at 128K, half the model's native 256K. That wasn't me being cautious. 128K is the most these two cards will physically hold once the overhead is paid, and I would have run the full 256K in a heartbeat if the VRAM allowed. It is worth holding onto that number, because the gap between it and the native window comes up again later, in a place I didn't expect.
 
 The decision that justified the hardware was native 4-bit math. Out of the box, the recipe ran the mixture-of-experts layers by decompressing the 4-bit weights back to 16-bit before multiplying, and it printed a confident warning that the hardware had "no native FP4." It crawled along at about 4 tokens per second. The warning was simply wrong, and why it was wrong is the whole reason I bought these cards. Native 4-bit tensor cores are exactly what the Blackwell generation added over the one before it. Once I pointed the server at a compute path actually built for the architecture, it ran the math in native 4-bit, and the model went from a science experiment to something usable in a single change.
@@ -51,6 +53,8 @@ There were other snags, like a two-GPU deadlock I cleared by switching off an ov
 
 The model resolved 299 of the 500 problems, or 59.8%. For a sparse MoE that activates only 3 billion parameters per token, quantized to 4 bits to fit in 32GB and run through a generic open-source scaffold on my own machine, I'm happy with that. For context, on the public SWE-bench Verified leaderboard, 60% sits above GPT-4.1 (54.6%) and just under Gemini 2.5 Pro (63.8%). That is roughly last-generation frontier territory, at zero marginal cost per token, fully private, on hardware that fits on a shelf.
 
+![The outcome compared to leaderboard](/assets/images/qwen36-leaderboard.svg)
+
 The comparison that stings is with the model's own headline. Qwen's model card reports 73.4% for this exact model, which puts it level with Claude Haiku 4.5 and Sonnet 4. I left 13.6 points on the table against that number. Working out where those points went is most of what this exercise was about.
 
 ## Where the 13 points went
@@ -59,12 +63,7 @@ The easy assumption is that quantization made the model dumber. That's mostly wr
 
 Here is what happened to the 500, broken down:
 
-| Outcome | Count | % of 500 |
-|---|---:|---:|
-| **Resolved** (patch passed tests) | 299 | 59.8% |
-| Unresolved (patch ran, failed tests) | 97 | 19.4% |
-| **Empty patch** (no diff produced) | 86 | 17.2% |
-| Harness error | 18 | 3.6% |
+![Chart showing causes of no patch](/assets/images/qwen36-empty-patches.svg)
 
 The number that changed how I read all of this is the next one. Of the 396 instances where the model actually committed to a patch that applied and ran, 299 passed. That is 75.5%.
 
