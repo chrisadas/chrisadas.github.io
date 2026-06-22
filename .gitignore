@@ -5,3 +5,8 @@ _site/
 Gemfile.lock
 vendor/
 .bundle/
+
+# Claude Code local files — keep out of repo
+CLAUDE.md
+.claude/
+.memsearch/
