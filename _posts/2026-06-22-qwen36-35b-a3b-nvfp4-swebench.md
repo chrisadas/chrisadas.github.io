@@ -5,7 +5,7 @@ date: 2026-06-22 10:00:00 +0000
 categories: general
 ---
 
-# I ran SWE-bench Verified on a 35B model at home. It scored 60%.
+# I ran SWE-bench Verified on a 35B model at home.
 
 I have two RTX PRO 2000 Blackwell cards at home, 16GB of GDDR7 each, 32GB in total. These are not H100s, or anything close to one. They're the kind of hardware you buy when you want to run local inference but you're paying for it yourself.
 
