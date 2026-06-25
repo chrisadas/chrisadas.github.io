@@ -125,7 +125,7 @@ When this model produces a patch, it's right about three times out of four. That
 
 That is 14% of the benchmark producing nothing, and almost all of it comes from the agent running out of room rather than the model failing to reason.
 
-## The empty patches are really a VRAM problem
+## The empty patches are really a context problem
 
 None of these empty patches is the model giving up. Each one carries an exit status, and they break down like this:
 
@@ -133,7 +133,7 @@ None of these empty patches is the model giving up. Each one carries an exit sta
 
 Almost all of these come from the agent running out of room before it writes a diff, not from the model failing to reason. Most of the time it exhausts its turn budget, the cap on how many steps it can take in a single run, and stops with nothing to submit. Another twenty fill the entire 256K context window, the model's full native limit, which means the run read so much that it had nothing left to work with. The rest are a few format errors and timeouts. None of this is the model reasoning badly. It is the agent running past the limits of the harness and the model's context length before it can finish.
 
-The context-window failures, when they happen, concentrate in Django, which accounts for thirteen of the twenty. The four format errors are the only failures that match the "model can't follow the diff format" story from the Unsloth GGUF community thread. Everything else is the agent running out of time or steps, not the model running out of ideas.
+The context-window failures, when they happen, concentrate in Django, which accounts for thirteen of the twenty. The four format errors are the only failures that match the "model can't follow the diff format" story from the Unsloth GGUF community thread — and even that number overstates the problem. Across all 500 instances, only 2 RepeatedFormatError events occurred on the tool-call XML specifically, giving roughly 99.6% per-instance tool-call reliability. Everything else is the agent running out of time or steps, not the model running out of ideas.
 
 So the 12-point gap from Qwen's headline comes down to three things, which I can now rank by the evidence:
 
@@ -145,7 +145,7 @@ So the 12-point gap from Qwen's headline comes down to three things, which I can
 
 A few more things surfaced in the per-instance data.
 
-There is no cheap way to cut losses early. Resolved instances took a median of 46 API calls and empties took a median of 250, most of them right up against the step limit, but that gap isn't the model working harder on the failures. Empties run long because hitting the step or context limit is exactly what leaves them empty, and the gap between resolved runs and wrong-but-submitted ones (46 against 66) is tangled up with difficulty, since easy problems are both cheaper and more likely to be solved. So the call counts don't really measure effort, and they don't justify capping the budget as a shortcut either. A third of my actual solves took more than 60 calls, and some took 187. A long run isn't a doomed one.
+There is no cheap way to cut losses early. Across all 500 tasks the average was 77 tool calls, ranging from 9 to 250. Resolved instances took a median of 46 and empties took a median of 250, most of them right up against the step limit, but that gap isn't the model working harder on the failures. Empties run long because hitting the step or context limit is exactly what leaves them empty, and the gap between resolved runs and wrong-but-submitted ones (46 against 66) is tangled up with difficulty, since easy problems are both cheaper and more likely to be solved. So the call counts don't really measure effort, and they don't justify capping the budget as a shortcut either. A third of my actual solves took more than 60 calls, and some took 187. A long run isn't a doomed one.
 
 Correct fixes are small, and wrong ones are bigger. The median resolved patch changes 4 lines, and the median unresolved one changes 10. Some of that is the same confound again, since harder bugs need bigger fixes and are more likely to come out wrong, but it still works as a rough signal. When this model is right, it's usually right in a few lines, and a diff that keeps growing is a fair sign that it has lost the thread rather than found it.
 
